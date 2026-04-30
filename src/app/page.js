@@ -20,6 +20,7 @@ export default function Home() {
             <h2 className="font-semibold">{product.name}</h2>
             <p className="text-sm text-gray-500">⭐ {product.rating}</p>
             <p className="font-bold">₹{product.price}</p>
+            
           </div>
         ))}
       </div>
