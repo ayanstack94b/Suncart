@@ -1,91 +1,67 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+
 
 const RegisterPage = () => {
 
-    const router = useRouter();
-
-    const [form, setForm] = useState({
-        name: "",
-        email: "",
-        photo: "",
-        password: "",
-    });
-
-    const handleRegister = (e) => {
-        e.preventDefault();
-
-        const { name, email, photo, password } = form;
-
-        if (!name || !email || !photo || !password) {
-            toast.error("All fields are required");
-            return;
+     const { register, handleSubmit, formState: { errors },watch } = useForm()
+    
+        const handleRegisterFunc = (data) => {
+            console.log('this is data from login', data);
+            const {name, email, photo, password} = data
         }
-
-        if (password.length < 6) {
-            toast.error("Password must be at least 6 characters");
-            return;
-        }
-
-        // 🔥 TEMP success
-        toast.success("Registration successful");
-
-        router.push("/login");
-    };
 
     return (
-        <div className="flex justify-center items-center min-h-[80vh] px-4">
-            <div className="card w-full max-w-md bg-base-100 shadow-md p-6">
+        <div className="container mx-auto flex items-center justify-center bg-base-200 p-5 min-h-screen px-4">
+            <div className="bg-white p-10 rounded shadow-md hover:shadow-xl transition-shadow duration-75">
+                {/* form title */}
+                <h2 className="text-3xl font-bold mb-5">Register to <span className="text-orange-500">Suncart</span></h2>
 
-                <h1 className="text-2xl font-bold text-center mb-6">Register</h1>
+                <form className="space-y-4" onSubmit={handleSubmit(handleRegisterFunc)}>
+                    {/* Name */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Name</legend>
+                        <input type="text"
+                            className="input"
+                            {...register("name", { required: true })}
+                            placeholder="Type your Name" />
+                        {errors.name && <span className="text-red-500 text-xs font-md">Name field is required</span>}
+                    </fieldset>
 
-                <form onSubmit={handleRegister} className="space-y-4">
+                    {/* Email */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Email address</legend>
+                        <input type="email"
+                            className="input"
+                            {...register("email", { required: true })}
+                            placeholder="Type your Email" />
+                        {errors.email && <span className="text-red-500 text-xs font-md">Email field is required</span>}
+                    </fieldset>
 
-                    <input
-                        type="text"
-                        placeholder="Name"
-                        className="input input-bordered w-full"
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    />
+                    {/* Photo */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Photo URL</legend>
+                        <input type="text"
+                            className="input"
+                            {...register("photo", { required: true })}
+                            placeholder="Type your URL" />
+                        {errors.photo && <span className="text-red-500 text-xs font-md">Photo URL is Required</span>}
+                    </fieldset>
 
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        className="input input-bordered w-full"
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="Photo URL"
-                        className="input input-bordered w-full"
-                        onChange={(e) => setForm({ ...form, photo: e.target.value })}
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        className="input input-bordered w-full"
-                        onChange={(e) => setForm({ ...form, password: e.target.value })}
-                    />
-
-                    <button className="btn bg-orange-500 hover:bg-orange-600 text-white w-full">
-                        Register
-                    </button>
+                    {/* Password */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Password</legend>
+                        <input type="password"
+                            className="input"
+                            {...register("password", { required: true })}
+                            placeholder="Type your Password" />
+                        {errors.password && <span className="text-red-500 text-xs font-md">Password is required</span>}
+                    </fieldset>
+                    <button type="submit " className="btn w-full bg-orange-500 text-white">Register</button>
                 </form>
-
-                <p className="text-sm text-center mt-4">
-                    Already have an account?{" "}
-                    <span
-                        onClick={() => router.push("/login")}
-                        className="text-orange-500 cursor-pointer"
-                    >
-                        Login
-                    </span>
-                </p>
+                <p className="text-gray-500 font-semibold my-5">Already have an Account? Please <Link href={'/login'}><span className="text-blue-600 font-md underline">Login</span></Link></p>
             </div>
         </div>
     );

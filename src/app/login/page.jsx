@@ -1,78 +1,45 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
 
-    const searchParams = useSearchParams();
-    const router = useRouter();
+    const { register, handleSubmit, formState: { errors },watch } = useForm()
 
-    const redirectPath = searchParams.get("redirect") || "/";
-
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
-        
-        if (!email || !password) {
-            toast.error("All fields are required");
-            return;
-        }
-
-        if (password.length < 6) {
-            toast.error("Password must be at least 6 characters");
-            return;
-        }
-
-        // simulate success
-        localStorage.setItem("isLoggedIn", "true");
-
-        toast.success("Login successful");
-        router.push(redirectPath);
-    };
+    const handleLoginFunc = (data) => {
+        console.log('this is data from login', data);
+    }
 
     return (
-        <div className="flex justify-center items-center min-h-[80vh] px-4">
-            <div className="card w-full max-w-md bg-base-100 shadow-md p-6">
+        <div className="container mx-auto flex items-center justify-center bg-base-200 p-3 min-h-[80vh] px-4">
+            <div className="bg-white p-10 rounded shadow-md hover:shadow-xl transition-shadow duration-75">
+                {/* form title */}
+                <h2 className="text-3xl font-bold mb-5">Login to <span className="text-orange-500">Suncart</span></h2>
 
-                <h1 className="text-2xl font-bold text-center mb-6">Login</h1>
+                <form className="space-y-4" onSubmit={handleSubmit(handleLoginFunc)}>
+                    {/* Email */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Email address</legend>
+                        <input type="email"
+                            className="input"
+                            {...register("email", { required: true })}
+                            placeholder="Type your Email" />
+                    {errors.email && <span className="text-red-500 text-xs font-md">Email field is required</span>}
+                    </fieldset>
 
-                <form onSubmit={handleLogin} className="space-y-4">
-
-                    <input
-                        type="email"
-                        placeholder="Email"
-                        className="input input-bordered w-full"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        className="input input-bordered w-full"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-
-                    <button className="btn bg-orange-500 hover:bg-orange-600 text-white w-full">
-                        Login
-                    </button>
+                    {/* Password */}
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Password</legend>
+                        <input type="password"
+                            className="input"
+                            {...register("password", {required: true})}
+                            placeholder="Type your Password" />
+                    {errors.password && <span className="text-red-500 text-xs font-md">Password is required</span>}
+                    </fieldset>
+                    <button type="submit " className="btn w-full bg-orange-500 text-white">Login</button>
                 </form>
-
-                <p className="text-sm text-center mt-4">
-                    Don’t have an account?{" "}
-                    <span
-                        onClick={() => router.push("/register")}
-                        className="text-orange-500 cursor-pointer"
-                    >
-                        Register
-                    </span>
-                </p>
+                <p className="text-gray-500 font-semibold my-5">Dont have an Account? Please <Link href={'/register'}><span className="text-blue-600 font-md underline">Register</span></Link></p>
             </div>
         </div>
     );
