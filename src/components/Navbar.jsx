@@ -61,10 +61,12 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className="flex items-center gap-2">
-                        <Lottie animationData={animationData} className="w-10" />
-                        <span className="text-orange-500 font-bold text-xl">SunCart</span>
-                    </div>
+                   <Link href={'/'}>
+                        <div className="flex items-center gap-2">
+                            <Lottie animationData={animationData} className="w-10" />
+                            <span className="text-orange-500 font-bold text-xl">SunCart</span>
+                        </div>
+                   </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

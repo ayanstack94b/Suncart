@@ -4,7 +4,9 @@ import ProductCard from '@/components/ProductCard';
 
 
 
-const ProductsPage = () => {
+const ProductsPage = async () => {
+    await new Promise((res) => setTimeout(res, 1500));
+
     return (
         <div className='container mx-auto my-10 min-h-screen p-3 '>
             {/* Title */}

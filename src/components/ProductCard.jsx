@@ -18,8 +18,10 @@ const ProductCard = ({ product }) => {
                 <figure className="relative w-full h-48">
                     <Image
                         src={image}
-                        alt={name}
-                        fill
+                        alt={name} 
+                        height={500}
+                        width={400}
+                        priority
                         className="object-cover rounded-t-lg"
                     />
                 </figure>

@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import products from "@/data/products.json";
 import Image from 'next/image';
 import { Star } from 'lucide-react';
@@ -6,11 +6,16 @@ import { Star } from 'lucide-react';
 const ProductDetailsPage = async ({ params }) => {
 
     const {id} = await params;
+    const isLoggedIn = false;
+
     const product = products.find(p => p.id === parseInt(id));
     if (!product) {
         notFound();
     }
 
+    if (!isLoggedIn) {
+        redirect(`/login?redirect=/products/${id}`);
+    }
     const { name, image, price, rating, description, brand, stock } = product;
 
     return (
