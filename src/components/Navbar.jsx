@@ -3,12 +3,18 @@ import Link from 'next/link';
 import { usePathname } from "next/navigation";
 import Lottie from "lottie-react";
 import animationData from "@/lottie/summerCart.json";
-
+import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
+import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
     const pathname = usePathname();
     const isLogin = pathname === "/login";
     const isRegister = pathname === "/register";
+
+    const { data: session, isPending } = authClient.useSession()
+    const user = session?.user;
+    console.log(session);
 
     const links = <>
         <li>
@@ -25,8 +31,8 @@ const Navbar = () => {
             <Link
                 href="/products"
                 className={`font-semibold text-lg ${pathname.startsWith("/products")
-                        ? "text-orange-500"
-                        : "hover:text-orange-600"
+                    ? "text-orange-500"
+                    : "hover:text-orange-600"
                     }`}
             >
                 Products
@@ -37,8 +43,8 @@ const Navbar = () => {
             <Link
                 href="/my-profile"
                 className={`font-semibold text-lg ${pathname === "/my-profile"
-                        ? "text-orange-500"
-                        : "hover:text-orange-600"
+                    ? "text-orange-500"
+                    : "hover:text-orange-600"
                     }`}
             >
                 My Profile
@@ -61,44 +67,83 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                   <Link href={'/'}>
+                    <Link href={'/'}>
                         <div className="flex items-center gap-2">
                             <Lottie animationData={animationData} className="w-10" />
                             <span className="text-orange-500 font-bold text-xl">SunCart</span>
                         </div>
-                   </Link>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {links}
                     </ul>
                 </div>
-
+               
+               
                 {/* active inactive button */}
-                
+
                 <div className="navbar-end gap-2">
 
-                    <Link href="/login">
-                        <button
-                            className={`btn ${isLogin
-                                    ? "bg-orange-500 text-white border-none"
-                                    : "btn-ghost"
-                                }`}
-                        >
-                            Login
-                        </button>
-                    </Link>
+                    {isPending ? (<span className="loading loading-bars loading-xl"></span>): user ? (
+                        <div className="flex items-center gap-3">
 
-                    <Link href="/register">
-                        <button
-                            className={`btn ${isRegister
-                                    ? "bg-orange-500 text-white border-none"
-                                    : "btn-ghost"
-                                }`}
-                        >
-                            Register
-                        </button>
-                    </Link>
+                            {/* User Info */}
+                            <h2 className="text-gray-500 font-semibold text-md">
+                                Hello, <span className="text-green-500 font-bold text-lg">{user?.name}</span>
+                            </h2>
+
+                            {/* Avatar */}
+                            {user?.image ? (
+                                <Image
+                                    src={user?.image}
+                                    alt="user"
+                                    height={50}
+                                    width={50}
+                                    className="rounded-full"
+                                />
+                            ) : (
+                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
+                                    <FaUser />
+                                </div>
+                            )}
+
+                            {/* Logout */}
+                            <button onClick={async()=>await authClient.signOut()}
+                                
+                                className="btn bg-red-600 text-white"
+                            >
+                                Logout
+                            </button>
+
+                        </div>
+                    ) : (
+                        <>
+                            {/* Login */}
+                            <Link href="/login">
+                                <button
+                                    className={`btn ${isLogin
+                                            ? "bg-orange-500 text-white border-none"
+                                            : "btn-ghost"
+                                        }`}
+                                >
+                                    Login
+                                </button>
+                            </Link>
+
+                            {/* Register */}
+                            <Link href="/register">
+                                <button
+                                    className={`btn ${isRegister
+                                            ? "bg-orange-500 text-white border-none"
+                                            : "btn-ghost"
+                                        }`}
+                                >
+                                    Register
+                                </button>
+                            </Link>
+                        </>
+                    )}
 
                 </div>
 

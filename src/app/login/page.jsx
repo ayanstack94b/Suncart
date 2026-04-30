@@ -1,14 +1,26 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
 
-    const { register, handleSubmit, formState: { errors },watch } = useForm()
+    const [isShowPassword, setIsShowPassword] = useState(false)
+    const { register, handleSubmit, formState: { errors }, watch } = useForm()
 
-    const handleLoginFunc = (data) => {
-        console.log('this is data from login', data);
+    const handleLoginFunc = async (data) => {
+        const { email, password } = data
+
+        const { data: res, error } = await authClient.signIn.email({
+            email: email, // required
+            password: password, // required
+            rememberMe: true,
+            callbackURL: "/",
+        });
+        console.log('from login', res, error);
     }
 
     return (
@@ -25,17 +37,20 @@ const LoginPage = () => {
                             className="input"
                             {...register("email", { required: true })}
                             placeholder="Type your Email" />
-                    {errors.email && <span className="text-red-500 text-xs font-md">Email field is required</span>}
+                        {errors.email && <span className="text-red-500 text-xs font-md">Email field is required</span>}
                     </fieldset>
 
                     {/* Password */}
-                    <fieldset className="fieldset">
+                    <fieldset className="fieldset relative">
                         <legend className="fieldset-legend">Password</legend>
-                        <input type="password"
+                        <input type={isShowPassword ? "text" : "password"}
                             className="input"
-                            {...register("password", {required: true})}
+                            {...register("password", { required: true })}
                             placeholder="Type your Password" />
-                    {errors.password && <span className="text-red-500 text-xs font-md">Password is required</span>}
+                            <span className="absolute right-2 top-4 cursor-pointer" onClick={()=>setIsShowPassword(!isShowPassword)}>
+                            {isShowPassword ? (<FaEye></FaEye>) : (<FaEyeSlash></FaEyeSlash>)}
+                            </span>
+                        {errors.password && <span className="text-red-500 text-xs font-md">Password is required</span>}
                     </fieldset>
                     <button type="submit " className="btn w-full bg-orange-500 text-white">Login</button>
                 </form>

@@ -1,17 +1,35 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const RegisterPage = () => {
 
-     const { register, handleSubmit, formState: { errors },watch } = useForm()
-    
-        const handleRegisterFunc = (data) => {
-            console.log('this is data from login', data);
-            const {name, email, photo, password} = data
+    const { register, handleSubmit, formState: { errors }, watch } = useForm()
+    const [isShowPassword, setIsShowPassword] = useState(false)
+    const handleRegisterFunc = async (data) => {
+        const { name, email, photo, password } = data
+        console.log('from Register', name, email, photo, password);
+
+        const { data: res, error } = await authClient.signUp.email({
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            image: photo,
+            callbackURL: '/',
+        })
+        console.log('from register', res, error);
+        if (error) {
+            alert(error.message)
         }
+        if (res) {
+            alert("Signup successfully")
+        }
+    }
 
     return (
         <div className="container mx-auto flex items-center justify-center bg-base-200 p-5 min-h-screen px-4">
@@ -51,12 +69,15 @@ const RegisterPage = () => {
                     </fieldset>
 
                     {/* Password */}
-                    <fieldset className="fieldset">
+                    <fieldset className="fieldset relative">
                         <legend className="fieldset-legend">Password</legend>
-                        <input type="password"
+                        <input type={isShowPassword ? 'text' : "password"}
                             className="input"
                             {...register("password", { required: true })}
                             placeholder="Type your Password" />
+                        <span className="absolute right-2 top-4 cursor-pointer" onClick={() => setIsShowPassword(!isShowPassword)}>
+                            {isShowPassword ? (<FaEye></FaEye>) : (<FaEyeSlash></FaEyeSlash>)}
+                        </span>
                         {errors.password && <span className="text-red-500 text-xs font-md">Password is required</span>}
                     </fieldset>
                     <button type="submit " className="btn w-full bg-orange-500 text-white">Register</button>
