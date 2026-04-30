@@ -7,7 +7,7 @@
     "rating": 4.7,
     "stock": 12,
     "description": "Stylish UV protection sunglasses perfect for summer outings and beach days.",
-    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083",
+    "image": "https://images.unsplash.com/photo-1729734189690-aed48f53fd9c?q=80&w=687&auto=format&fit=crop",
     "category": "Accessories"
   },
   {
@@ -18,7 +18,7 @@
     "rating": 4.5,
     "stock": 20,
     "description": "Breathable cotton t-shirt designed to keep you cool during hot summer days.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+    "image": "https://images.unsplash.com/photo-1716369786510-cdf7fc222f34?q=80&w=687&auto=format&fit=crop",
     "category": "Clothing"
   },
   {
@@ -29,7 +29,7 @@
     "rating": 4.8,
     "stock": 15,
     "description": "High protection sunscreen that shields your skin from harmful UV rays.",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348",
+      "image": "https://images.unsplash.com/photo-1673350963913-d937b5968e93?q=80&w=800&auto=format&fit=crop",
     "category": "Skincare"
   },
   {
@@ -40,7 +40,7 @@
     "rating": 4.4,
     "stock": 10,
     "description": "Classic wide-brim straw hat for ultimate sun protection and style.",
-    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+     "image": "https://images.unsplash.com/photo-1588450453868-5becf516cf52?q=80&w=800&auto=format&fit=crop",
     "category": "Accessories"
   },
   {
@@ -51,7 +51,7 @@
     "rating": 4.3,
     "stock": 25,
     "description": "Comfortable and durable flip flops ideal for beach and casual wear.",
-    "image": "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6",
+    "image": "https://images.unsplash.com/photo-1626771652942-93d834f3d1fd?q=80&w=800&auto=format&fit=crop",
     "category": "Footwear"
   },
   {
@@ -62,7 +62,7 @@
     "rating": 4.6,
     "stock": 18,
     "description": "Reusable water bottle to keep you hydrated throughout the day.",
-    "image": "https://images.unsplash.com/photo-1526401485004-2aa7c8c6f36f",
+      "image": "https://images.unsplash.com/photo-1625708458528-802ec79b1ed8?q=80&w=880&auto=format&fit=crop",
     "category": "Lifestyle"
   }
 ]
