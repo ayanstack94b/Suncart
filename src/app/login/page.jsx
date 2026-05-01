@@ -1,10 +1,13 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 
 const LoginPage = () => {
 
@@ -20,14 +23,22 @@ const LoginPage = () => {
             rememberMe: true,
             callbackURL: "/",
         });
-        console.log('from login', res, error);
+
+        if (error) {
+            toast.error(error.message);
+            return;
+        }
+
+        toast.success("Login successful");
     }
+
 
     const handleGoogleSignin =async()=>{
         const data = await authClient.signIn.social({
             provider: "google",
         });
     }
+ 
 
     return (
         <div className="container mx-auto mt-10 flex items-center justify-center bg-base-200 p-3 min-h-[80vh] px-4">
