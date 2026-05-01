@@ -2,37 +2,40 @@
 
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const RegisterPage = () => {
-
+    const router = useRouter();
     const { register, handleSubmit, formState: { errors }, watch } = useForm()
     const [isShowPassword, setIsShowPassword] = useState(false)
     const handleRegisterFunc = async (data) => {
         const { name, email, photo, password } = data
-        console.log('from Register', name, email, photo, password);
+        // console.log('from Register', name, email, photo, password);
 
         const { data: res, error } = await authClient.signUp.email({
-            name: name, // required
-            email: email, // required
-            password: password, // required
+            name: name,
+            email: email,
+            password: password,
             image: photo,
-            callbackURL: '/',
+
         })
-        console.log('from register', res, error);
+
         if (error) {
-            alert(error.message)
+            toast.error(error.message || "Signup failed");
+            return;
         }
-        if (res) {
-            alert("Signup successfully")
-        }
+
+        toast.success("Signup successful");
+        router.push("/login");
     }
 
     return (
-        <div className="container mx-auto mt-10 flex items-center justify-center bg-base-200 p-5 min-h-[90vh] px-4">
+        <div className="container mx-auto my-20 py-20 flex items-center justify-center bg-base-200 p-5 min-h-[90vh] px-4">
             <div className="bg-white w-md p-10 rounded shadow-md hover:shadow-xl transition-shadow duration-75">
                 {/* form title */}
                 <h2 className="text-3xl font-bold mb-5">Register to <span className="text-orange-500">Suncart</span></h2>

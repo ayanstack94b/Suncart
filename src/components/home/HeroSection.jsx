@@ -1,10 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
-import { motion } from "framer-motion";
-import { FaSun } from "react-icons/fa";
 import Image from "next/image";
 
 
@@ -29,8 +25,8 @@ const slides = [
 const HeroSection = () => {
     const [current, setCurrent] = useState(0);
 
-    const router = useRouter();
-    const { data: session } = authClient.useSession();
+    // const router = useRouter();
+    // const { data: session } = authClient.useSession();
 
 
     useEffect(() => {
@@ -41,16 +37,10 @@ const HeroSection = () => {
         return () => clearInterval(interval);
     }, []);
 
-    const handleShopNow = () => {
-        if (!session) {
-            router.push("/login?redirect=/products");
-        } else {
-            router.push("/products");
-        }
-    };
+
 
     return (
-        <div className="relative w-full h-[70vh] md:h-[80vh] lg:h-screen overflow-hidden">
+        <div className="relative w-full h-[30vh] md:h-[110vh] lg:min-h-screen overflow-hidden">
 
             {slides.map((slide, index) => (
                 <div

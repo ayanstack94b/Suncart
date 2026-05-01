@@ -12,7 +12,6 @@ const MyProfilePage = () => {
 
     const user = session?.user;
 
-    // 🔐 protect route
     useEffect(() => {
         if (!isPending && !session) {
             router.replace("/login?redirect=/my-profile");

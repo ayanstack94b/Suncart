@@ -81,7 +81,7 @@ const Navbar = () => {
                 </div>
                
                
-                {/* active inactive button */}
+                {/* active inactive buttonns */}
 
                 <div className="navbar-end gap-2">
 
@@ -95,13 +95,15 @@ const Navbar = () => {
 
                             {/* Avatar */}
                             {user?.image ? (
-                                <Image
-                                    src={user?.image}
-                                    alt="user"
-                                    height={50}
-                                    width={50}
-                                    className="rounded-full"
-                                />
+                               <Link href={'/my-profile'}>
+                                    <Image
+                                        src={user?.image}
+                                        alt="user"
+                                        height={50}
+                                        width={50}
+                                        className="rounded-full"
+                                    />
+                               </Link>
                             ) : (
                                 <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
                                     <FaUser />

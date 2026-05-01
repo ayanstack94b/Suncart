@@ -6,19 +6,19 @@ import { FaWater, FaSun, FaTshirt } from "react-icons/fa";
 const tips = [
     {
         title: "Stay Hydrated",
-        desc: "Drink enough water to avoid dehydration.",
+        desc: "Drink water regularly throughout the day to prevent fatigue, dizziness, and heat exhaustion during hot weather.",
         icon: <FaWater className="text-orange-500 text-2xl" />,
     },
     {
         title: "Use Sunscreen",
-        desc: "Protect your skin from harmful UV rays.",
+        desc: "Apply SPF 30+ sunscreen before stepping out to protect your skin from sunburn, tanning, and long-term damage.",
         icon: <FaSun className="text-orange-500 text-2xl" />,
     },
     {
         title: "Wear Light Clothes",
-        desc: "Stay cool with breathable fabrics.",
+        desc: "Choose loose, breathable fabrics like cotton to stay cool and comfortable even during peak summer heat.",
         icon: <FaTshirt className="text-orange-500 text-2xl" />,
-    },
+    }
 ];
 
 const containerVariants = {
@@ -41,14 +41,14 @@ const cardVariants = {
 
 const SummerTips = () => {
     return (
-        <section className="container mx-auto px-4 py-10">
+        <section className="p-10 mt-3 md:mt-10 lg:pt-20 h-[80vh] px-4 py-10 bg-orange-50 rounded">
 
             {/* Title */}
             <motion.h2
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold my-15 text-center flex items-center justify-center gap-2"
             >
                 <motion.span
                     animate={{ rotate: 360 }}
@@ -70,7 +70,7 @@ const SummerTips = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="grid md:grid-cols-3 gap-6"
+                className="container mx-auto grid md:grid-cols-3 gap-6"
             >
                 {tips.map((tip, i) => (
                     <motion.div
