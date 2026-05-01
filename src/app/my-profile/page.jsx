@@ -53,7 +53,7 @@ const MyProfilePage = () => {
                 <h2 className="text-xl font-semibold">{user?.name}</h2>
                 <p className="text-gray-500">{user?.email}</p>
 
-                {/* Update Button */}
+
                 <Link href="/my-profile/update">
                     <button className="btn mt-6 bg-orange-500 text-white">
                         Update Profile

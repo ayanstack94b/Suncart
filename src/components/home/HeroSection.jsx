@@ -68,7 +68,7 @@ const HeroSection = () => {
                 </div>
             ))}
 
-            {/* indicators */}
+
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                 {slides.map((_, i) => (
                     <div

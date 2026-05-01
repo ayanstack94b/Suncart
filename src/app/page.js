@@ -11,9 +11,8 @@ export default function Home() {
 
   return (
     <div className="space-y-16">
-
       <HeroSection />
-
+      <TopBrands />
       {/* Popular Products */}
       <section className="container mx-auto px-4">
         <h2 className="text-2xl font-bold mb-6">🔥 Popular Products</h2>
@@ -26,8 +25,6 @@ export default function Home() {
       </section>
 
       <SummerTips />
-
-      <TopBrands />
     </div>
   );
 }
