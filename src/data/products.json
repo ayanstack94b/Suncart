@@ -64,5 +64,28 @@
     "description": "Reusable water bottle to keep you hydrated throughout the day.",
       "image": "https://images.unsplash.com/photo-1625708458528-802ec79b1ed8?q=80&w=880&auto=format&fit=crop",
     "category": "Lifestyle"
+  },
+   {
+    "id": 7,
+    "name": "Summer Cap",
+    "brand": "Adidas",
+    "price": 699,
+    "rating": 4.2,
+    "stock": 20,
+    "description": "Lightweight cap that protects your head from direct sunlight while keeping you cool.",
+    "image": "https://images.unsplash.com/photo-1521369909029-2afed882baee?q=80&w=1170&auto=format&fit=crop",
+    "category": "Accessories"
+  },
+  {
+    "id": 8,
+    "name": "Linen Summer Shirt",
+    "brand": "Zara",
+    "price": 1599,
+    "rating": 4.5,
+    "stock": 14,
+    "description": "Premium linen shirt designed for maximum airflow and comfort during hot days.",
+    "image": "https://images.unsplash.com/photo-1713881630214-82c44407cf25?q=80&w=1170&auto=format&fit=crop",
+    "category": "Clothing"
   }
+
 ]

@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import HeroSection from "@/components/home/HeroSection";
 import SummerTips from "@/components/home/SummerTips";
 import TopBrands from "@/components/home/TopBrands";
+import StaticTopBrands from "@/components/home/StaticTopBrands";
 
 export default function Home() {
   const popularProducts = products.slice(0, 3);
@@ -23,7 +24,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+      <StaticTopBrands />
       <SummerTips />
     </div>
   );

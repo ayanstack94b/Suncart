@@ -1,16 +1,19 @@
+
 import { notFound, redirect } from 'next/navigation';
 import products from "@/data/products.json";
 import Image from 'next/image';
 import { Star } from 'lucide-react';
-import { auth } from '@/lib/auth';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa';
 
 
 const ProductDetailsPage = async ({ params }) => {
 
-    const { id } = await params; // ✅ required in your Next version
+
+    const { id } = await params; 
 
     const product = products.find(
-        (p) => String(p.id) === String(id) // safe match
+        (p) => String(p.id) === String(id) 
     );
 
     if (!product) {
@@ -54,9 +57,11 @@ const ProductDetailsPage = async ({ params }) => {
                         Stock: {stock > 0 ? "Available" : "Out of stock"}
                     </p>
 
-                    <button className="btn bg-orange-500 hover:bg-orange-600 text-white border-none">
-                        Buy Now
-                    </button>
+                <Link href={'/products'}>
+                        <button className="btn btn-outline bg-orange-500 text-white cursor-pointer">
+                           <FaArrowLeft/> Go Back
+                        </button>
+                </Link>
                 </div>
 
             </div>
