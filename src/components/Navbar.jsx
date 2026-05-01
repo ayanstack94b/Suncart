@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const { data: session, isPending } = authClient.useSession()
     const user = session?.user;
-    console.log(session);
+    console.log(session, user);
 
     const links = <>
         <li>
@@ -124,7 +124,7 @@ const Navbar = () => {
                                 <button
                                     className={`btn ${isLogin
                                             ? "bg-orange-500 text-white border-none"
-                                            : "btn-ghost"
+                                            : "btn-ghost font-medium text-orange-600 text-lg"
                                         }`}
                                 >
                                     Login

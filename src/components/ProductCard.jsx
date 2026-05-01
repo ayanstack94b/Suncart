@@ -5,9 +5,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 const ProductCard = ({ product }) => {
-    
-    
-    
+
     const { name, price, image, rating, id } = product;
 
     return (
@@ -22,6 +20,7 @@ const ProductCard = ({ product }) => {
                         height={500}
                         width={400}
                         priority
+                        loading="eager"
                         className="object-cover rounded-t-lg"
                     />
                 </figure>
