@@ -1,26 +1,35 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+
+
 
 const ProductCard = ({ product }) => {
 
     const { name, price, image, rating, id } = product;
 
-    return (
-        <div className='container mx-auto'>
-            <div className="card bg-base-100  w-full shadow-sm">
+    const router = useRouter();
+    const { data: session } = authClient.useSession();
 
-                {/* Image container */}
+    const handleViewDetails = () => {
+        if (!session) {
+            router.push(`/login?redirect=/products/${id}`);
+        } else {
+            router.push(`/products/${id}`);
+        }
+    };
+
+    return (
+        <div className="container mx-auto">
+            <div className="card bg-base-100 w-full shadow-sm">
+
+                {/* Image */}
                 <figure className="relative w-full h-48">
                     <Image
                         src={image}
-                        alt={name} 
-                        height={500}
-                        width={400}
-                        priority
-                        loading="eager"
+                        alt={name}
+                        fill
                         className="object-cover rounded-t-lg"
                     />
                 </figure>
@@ -34,18 +43,16 @@ const ProductCard = ({ product }) => {
                     <p className="font-bold text-lg">₹{price}</p>
 
                     <div className="card-actions">
-                       
-                           <Link href={`/products/${id}`}>
-                            <button className="btn bg-orange-500 hover:bg-orange-600 text-white border-none">
-                                View Details
-                            </button>
-                           </Link>
-                       
+                        <button
+                            onClick={handleViewDetails}
+                            className="btn bg-orange-500 hover:bg-orange-600 text-white border-none"
+                        >
+                            View Details
+                        </button>
                     </div>
                 </div>
 
             </div>
-           
         </div>
     );
 };
