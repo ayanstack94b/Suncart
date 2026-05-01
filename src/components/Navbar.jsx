@@ -6,11 +6,15 @@ import animationData from "@/lottie/summerCart.json";
 import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import { FaUser } from 'react-icons/fa';
+import { useRouter } from "next/navigation";
+
 
 const Navbar = () => {
     const pathname = usePathname();
     const isLogin = pathname === "/login";
     const isRegister = pathname === "/register";
+    const router = useRouter();
+
 
     const { data: session, isPending } = authClient.useSession()
     const user = session?.user;
@@ -111,8 +115,11 @@ const Navbar = () => {
                             )}
 
                             {/* Logout */}
-                            <button onClick={async()=>await authClient.signOut()}
-                                
+                            <button
+                                onClick={async () => {
+                                    await authClient.signOut();
+                                    router.push("/login"); 
+                                }}
                                 className="btn bg-red-600 text-white"
                             >
                                 Logout

@@ -41,7 +41,7 @@ const cardVariants = {
 
 const SummerTips = () => {
     return (
-        <section className="p-10 mt-3 md:mt-10 lg:pt-20 min-h-screen px-4 py-10 bg-orange-50 rounded">
+        <section className=" md:pb-20 lg:pb-40 min-h-screen md:min-h-[80vh] lg:min-h-[60vh] px-4 ">
 
             {/* Title */}
             <motion.h2

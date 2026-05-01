@@ -11,19 +11,18 @@ const ProductsPage = () => {
 
     const { data: session, isPending } = authClient.useSession();
 
-    // 🔐 redirect if not logged in
+
     useEffect(() => {
         if (!isPending && !session) {
             router.replace("/login?redirect=/products");
         }
     }, [session, isPending, router]);
 
-    // ⏳ loading state
+    //  loading
     if (isPending) {
-        return <div className="text-center py-10">Loading...</div>;
+        return <span className="loading loading-spinner text-error text-center py-10"></span>;
     }
 
-    // 🚫 prevent flicker
     if (!session) {
         return null;
     }

@@ -46,7 +46,7 @@ const RegisterPage = () => {
         <div className="container mx-auto my-20 py-20 flex items-center justify-center bg-base-200 p-5 min-h-[90vh] px-4">
             <div className="bg-white w-md p-10 rounded shadow-md hover:shadow-xl transition-shadow duration-75">
                 {/* form title */}
-                <h2 className="text-3xl font-bold mb-5">Register to <span className="text-orange-500">Suncart</span></h2>
+                <h2 className="text-3xl font-bold mb-5 text-center">Register to <span className="text-orange-500">Suncart</span></h2>
 
                 <form className="space-y-4" onSubmit={handleSubmit(handleRegisterFunc)}>
                     {/* Name */}

@@ -38,7 +38,7 @@ const StaticTopBrands = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6"
+                className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6"
             >
                 {brands.map((brand, i) => (
                     <motion.div
