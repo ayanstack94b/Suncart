@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌞 Suncart — Summer E-commerce Experience
 
-## Getting Started
+A modern, responsive summer-themed e-commerce application built with **Next.js**, focused on clean UI, smooth user experience, and authentication flow.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Highlights
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* 🔐 Secure authentication (Email + Google)
+* 🔒 Protected routes with redirect handling
+* 🎨 Smooth animations with Framer Motion
+* 📱 Fully responsive design
+* ⚡ Fast, clean, and minimal UI
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧭 Features Overview
 
-## Learn More
+### 🏠 Home Experience
 
-To learn more about Next.js, take a look at the following resources:
+* Auto-sliding hero banner
+* Popular products section
+* Summer care tips with animations
+* Styled top brands section
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🛒 Product Flow
 
-## Deploy on Vercel
+* Product listing from static JSON
+* Responsive product grid
+* Protected access (login required)
+* Detailed product view with clean layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🔐 Authentication System
+
+* Login & Register with validation
+* Google social login
+* Toast-based feedback system
+* Redirect to intended page after login
+
+---
+
+### 👤 User Profile *(Bonus)*
+
+* View user information (name, email, image)
+* Update profile (name & photo)
+
+---
+
+## 🎨 UI & UX Focus
+
+* Clean card-based design
+* Subtle hover interactions
+* Smooth entrance animations
+* Consistent color system (summer theme)
+* Optimized image rendering
+
+---
+
+## 🧩 Tech Stack
+
+| Technology      | Usage                  |
+| --------------- | ---------------------- |
+| Next.js         | App Router & Rendering |
+| Tailwind CSS    | Styling                |
+| DaisyUI         | UI Components          |
+| BetterAuth      | Authentication         |
+| MongoDB Atlas   | Database               |
+| Framer Motion   | Animations             |
+| React Hot Toast | Notifications          |
+
+---
+
+## 📌 Notes
+
+* Product data is static (JSON-based)
+* Cart functionality is simulated using toast feedback
+* Focus is on UI/UX and authentication flow
+
+---
+
+## 🚀 Live link: 
+
+
