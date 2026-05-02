@@ -17,8 +17,8 @@ const LoginPage = () => {
         const { email, password } = data
 
         const { data: res, error } = await authClient.signIn.email({
-            email: email, 
-            password: password, 
+            email: email,
+            password: password,
             rememberMe: true,
             callbackURL: "/",
         });
@@ -27,17 +27,17 @@ const LoginPage = () => {
             toast.error(error.message);
             return;
         }
-
         toast.success("Login successful");
+
+
     }
 
-
-    const handleGoogleSignin =async()=>{
+    const handleGoogleSignin = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
         });
     }
- 
+
 
     return (
         <div className="container mx-auto my-20 flex items-center justify-center bg-base-200 p-3 min-h-[80vh] px-4">
