@@ -91,7 +91,7 @@ const RegisterPage = () => {
                         </span>
                         {errors.password && <span className="text-red-500 text-xs font-md">Password is required</span>}
                     </fieldset>
-                    <button type="submit " className="btn w-full bg-orange-500 text-white">Register</button>
+                    <button type="submit" className="btn w-full bg-orange-500 text-white">Register</button>
                 </form>
                 <p className="text-gray-500 font-semibold my-5 text-center">Already have an Account? Please <Link href={'/login'}><span className="text-blue-600 font-md underline">Login</span></Link></p>
 
