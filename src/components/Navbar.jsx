@@ -15,7 +15,6 @@ const Navbar = () => {
     const isRegister = pathname === "/register";
     const router = useRouter();
 
-
     const { data: session, isPending } = authClient.useSession()
     const user = session?.user;
 

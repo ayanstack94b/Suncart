@@ -25,10 +25,6 @@ const slides = [
 const HeroSection = () => {
     const [current, setCurrent] = useState(0);
 
-    // const router = useRouter();
-    // const { data: session } = authClient.useSession();
-
-
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);

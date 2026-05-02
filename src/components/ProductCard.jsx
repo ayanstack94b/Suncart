@@ -2,6 +2,7 @@
 import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { FaStar } from 'react-icons/fa';
 
 
 
@@ -34,11 +35,11 @@ const ProductCard = ({ product }) => {
                     />
                 </figure>
 
-                {/* Body */}
+                {/*  */}
                 <div className="card-body items-center text-center">
                     <h2 className="card-title line-clamp-2">{name}</h2>
 
-                    <p className="text-sm text-gray-500">⭐ {rating}</p>
+                    <p className="text-sm text-gray-500"><FaStar className='text-yellow-400' size={24}></FaStar> {rating}</p>
 
                     <p className="font-bold text-lg">₹{price}</p>
 

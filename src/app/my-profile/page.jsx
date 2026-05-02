@@ -19,7 +19,7 @@ const MyProfilePage = () => {
     }, [session, isPending, router]);
 
     if (isPending) {
-        return <div className="text-center py-10">Loading...</div>;
+        return <span className="loading loading-ring loading-xl"></span>;
     }
 
     if (!session) {

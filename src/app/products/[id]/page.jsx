@@ -1,5 +1,5 @@
 
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import products from "@/data/products.json";
 import Image from 'next/image';
 import { Star } from 'lucide-react';

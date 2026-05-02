@@ -11,7 +11,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterPage = () => {
     const router = useRouter();
-    const { register, handleSubmit, formState: { errors }, watch } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm()
     const [isShowPassword, setIsShowPassword] = useState(false)
 
 

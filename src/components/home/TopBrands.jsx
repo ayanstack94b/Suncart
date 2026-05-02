@@ -45,16 +45,16 @@ const TopBrands = () => {
                     <div
                         key={i}
                         className="
-        mx-3 sm:mx-4 md:mx-6
-        flex items-center gap-2 sm:gap-3
-        bg-white
-        px-3 sm:px-4 md:px-5
-        py-2 sm:py-3
-        rounded-xl
-        shadow
-        border border-orange-100
-        hover:shadow-lg transition
-      "
+                                            mx-3 sm:mx-4 md:mx-6
+                                            flex items-center gap-2 sm:gap-3
+                                            bg-white
+                                            px-3 sm:px-4 md:px-5
+                                            py-2 sm:py-3
+                                            rounded-xl
+                                            shadow
+                                            border border-orange-100
+                                            hover:shadow-lg transition
+                                 "
                     >
                         <div className={`p-2 rounded-full ${brand.bg}`}>
                             <span className={`${brand.color} text-lg sm:text-xl`}>
