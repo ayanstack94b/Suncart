@@ -57,8 +57,9 @@ const Navbar = () => {
 
 
     return (
-        <div className=''>
-            <div className="navbar container mx-auto">
+
+        <div className="sticky top-0 z-50 bg-base-100">
+            <div className="navbar container mx-auto ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -66,7 +67,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex="0"
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
                             {links}
                         </ul>
                     </div>
@@ -82,13 +83,13 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-               
-               
+
+
                 {/* active inactive buttonns */}
 
                 <div className="navbar-end gap-2">
 
-                    {isPending ? (<span className="loading loading-bars loading-xl"></span>): user ? (
+                    {isPending ? (<span className="loading loading-bars loading-xl"></span>) : user ? (
                         <div className="flex items-center gap-3">
 
                             {/* User Info */}
@@ -98,7 +99,7 @@ const Navbar = () => {
 
                             {/* Avatar */}
                             {user?.image ? (
-                               <Link href={'/my-profile'}>
+                                <Link href={'/my-profile'}>
                                     <Image
                                         src={user?.image}
                                         alt="user"
@@ -106,7 +107,7 @@ const Navbar = () => {
                                         width={50}
                                         className="rounded-full"
                                     />
-                               </Link>
+                                </Link>
                             ) : (
                                 <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">
                                     <FaUser />
@@ -117,7 +118,7 @@ const Navbar = () => {
                             <button
                                 onClick={async () => {
                                     await authClient.signOut();
-                                    router.push("/login"); 
+                                    router.push("/login");
                                 }}
                                 className="btn bg-red-600 text-white"
                             >
@@ -131,8 +132,8 @@ const Navbar = () => {
                             <Link href="/login">
                                 <button
                                     className={`btn ${isLogin
-                                            ? "bg-orange-500 text-white border-none"
-                                            : "btn-ghost font-medium text-orange-600 text-lg"
+                                        ? "bg-orange-500 text-white border-none"
+                                        : "btn-ghost font-medium text-orange-600 text-lg"
                                         }`}
                                 >
                                     Login
@@ -143,8 +144,8 @@ const Navbar = () => {
                             <Link href="/register">
                                 <button
                                     className={`btn ${isRegister
-                                            ? "bg-orange-500 text-white border-none"
-                                            : "btn-ghost"
+                                        ? "bg-orange-500 text-white border-none"
+                                        : "btn-ghost"
                                         }`}
                                 >
                                     Register
@@ -157,6 +158,7 @@ const Navbar = () => {
 
             </div>
         </div>
+
     );
 };
 
